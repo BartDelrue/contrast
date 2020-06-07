@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Color contrast combinator</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:url" content="https://bart.cf/contrast"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="Color contrast combinator"/>
+    <meta property="og:description"
+          content="Checks the WCAG2.0 compliance for all possible combinations of any given color palette."/>
+    <meta property="og:image" content="https://bart.cf/img/contrast.png"/>
+    <meta property="og:site_name" content="Bart.cf"/>
+    <meta name="description"
+          content="Checks the WCAG2.0 compliance for all possible combinations of any given color palette."/>
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="apple-touch-icon" sizes="76x76" href="./apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+    <link rel="manifest" href="./site.webmanifest">
+    <link rel="mask-icon" href="./safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#23333a">
+
+</head>
+<body>
+<div class="container">
+    <main class="content-container">
+        <h1>Bart's color combinator discussion terminator</h1>
+
+        <div class="flex">
+            <form class="csv">
+                <h2>Colors</h2>
+                <label for="csv">CSV name, hex|rgb|rgba</label>
+
+                <textarea name="csv" id="csv" class="csv" cols="30" rows="10"></textarea>
+                <fieldset>
+                    <legend>Order by</legend>
+                    <div>
+                        <input name="order" type="radio" value="bg" id="rd-bg" checked>
+                        <label for="rd-bg">background</label>
+                    </div>
+                    <div>
+                        <input name="order" type="radio" value="fg" id="rd-fg">
+                        <label for="rd-fg">foreground</label>
+                    </div>
+                </fieldset>
+                <div class="form-actions">
+                    <input type="submit" value="combine">
+                </div>
+                <div class="errors csv"></div>
+                <div class="progress"><span></span></div>
+                <p><a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html">WCAG 2 level
+                    AA</a> requires a contrast ratio of at least 4.5:1 for normal text and 3:1 for large text.</p>
+                <p><em>Large text is defined as 14 point (typically 18.66px) and bold or larger, or 18 point (typically
+                    24px) or larger.</em></p>
+            </form>
+            <div>
+                <section>
+                    <h2 id="passTitle" hidden>OK for small text</h2>
+                    <div id="passes">
+                    </div>
+                </section>
+                <section>
+                    <h2 id="largeTitle" hidden>OK for large text only</h2>
+                    <div id="large">
+                    </div>
+                </section>
+                <section>
+                    <h2 id="failTitle" hidden>Really not OK</h2>
+                    <div id="fails" class="color-container">
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+</div>
+<script src="contrast.js"></script>
+<script src="tabs.js"></script>
+</body>
+</html>
